@@ -6,12 +6,11 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 07:49:23 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/01/26 03:55:02 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:11:57 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
-
 
 int			valid_line(const char *line)
 {
@@ -44,11 +43,14 @@ void		shift_topleft(t_tetri *tetri)
 int			valid_tetri(t_tetri tetri)
 {
 	size_t	i;
-	t_tetri	valid_tetris[] = {
-		15, 16, 23, 39, 51, 54, 71, 99, 113, 114, 116,
-		275, 305, 306, 547, 561, 562, 785, 802, 4369};
+	t_tetri	*valid_tetris;
+
+	valid_tetris = (t_tetri[]) {
+		15, 23, 39, 51, 54, 71, 99, 113, 114
+		, 116, 275, 305, 306, 547, 561, 562, 785, 802, 4369
+	};
 	i = 0;
-	while (i < sizeof(valid_tetris)/sizeof(valid_tetris[0]))
+	while (i < 19)
 	{
 		if (valid_tetris[i] == tetri)
 			return (1);
@@ -70,7 +72,7 @@ int			read_tetri(int fd, t_list **tetris)
 	r_result = read(fd, line, 21);
 	if (r_result == -1 || !valid_line(line))
 		return (-1);
-	line[20] = '\0'; 
+	line[20] = '\0';
 	while ((buf = ft_strchr(line, '#')))
 	{
 		i = buf - line - 4;
@@ -104,7 +106,7 @@ int			main(int argc, char **argv)
 	{
 		result = read_tetri(fd, &tetris);
 		if (!result)
-			break;
+			break ;
 		if (result == -1)
 		{
 			ft_putendl("error");

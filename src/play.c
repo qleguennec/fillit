@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 07:06:27 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/01/29 16:27:39 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:12:52 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ int				valid_play(t_board *b, size_t w, t_tetri t, size_t offset)
 		stat[2] >>= 1;
 		if (stat[1] + offset % w >= w)
 			return (valid_play(b, w, old_t, offset + 1));
-		stat[1]++;
 	}
 	return (offset);
 }
 
-t_board		*play(t_board *b, size_t w, t_tetri t, size_t offset)
+t_board			*play(t_board *b, size_t w, t_tetri t, size_t offset)
 {
 	size_t		i;
 	size_t		new_offset;
@@ -55,7 +54,7 @@ t_board		*play(t_board *b, size_t w, t_tetri t, size_t offset)
 		return (NULL);
 	while (t)
 	{
-		*new_board |= (t_board)(t & 0xF) 
+		*new_board |= (t_board)(t & 0xF)
 			<< (w * i + new_offset);
 		t >>= 4;
 		i++;
@@ -63,7 +62,8 @@ t_board		*play(t_board *b, size_t w, t_tetri t, size_t offset)
 	return (new_board);
 }
 
-int			try_width(t_list *boards, size_t w, t_list *tetris, size_t offset)
+int				try_width
+	(t_list *boards, size_t w, t_list *tetris, size_t offset)
 {
 	t_board	*new_board;
 
@@ -84,7 +84,7 @@ int			try_width(t_list *boards, size_t w, t_list *tetris, size_t offset)
 	return (0);
 }
 
-int			main_loop(size_t starting_width, t_list *tetris, t_list **sol)
+int				main_loop(size_t starting_width, t_list *tetris, t_list **sol)
 {
 	size_t	width;
 	t_list	*board;
