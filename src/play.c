@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 07:06:27 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/11 14:12:52 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:28:39 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int				valid_play(t_board *b, size_t w, t_tetri t, size_t offset)
 	while (stat[2])
 	{
 		stat[2] >>= 1;
-		if (stat[1] + offset % w >= w)
+		if (stat[1]++ + offset % w >= w)
 			return (valid_play(b, w, old_t, offset + 1));
 	}
 	return (offset);

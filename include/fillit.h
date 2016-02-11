@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 07:54:19 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/11 12:05:27 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/11 18:29:27 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void				print_final_board(t_list *boards, size_t w);
 int					try_width(t_list *boards, size_t w, t_list *tetris, size_t offset);
 int					main_loop(size_t starting_width, t_list *tetris, t_list **sol);
 int					ft_sqrt(int x);
+void				ft_exit(char *msg, int status);
 
 #endif

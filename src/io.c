@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 06:25:24 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/11 12:04:52 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/11 18:29:09 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,10 @@ void		print_final_board(t_list *boards, size_t w)
 		ft_putchar('\n');
 		s += w;
 	}
+}
+
+void		ft_exit(char *msg, int status)
+{
+	ft_putendl(msg);
+	exit(status);
 }

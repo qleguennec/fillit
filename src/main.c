@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 07:49:23 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/11 14:11:57 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/11 18:31:48 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,19 @@ int			main(int argc, char **argv)
 	t_list	*boards;
 
 	tetris = NULL;
-	if (argc != 2 || (fd = open(argv[1], O_RDONLY, 0)) == -1)
-	{
-		ft_putendl("error");
-		return (1);
-	}
+	if (argc != 2)
+		ft_exit("usage: fillit file", 1);
+	if ((fd = open(argv[1], O_RDONLY, 0)) == -1)
+		ft_exit("error", 1);
 	while (1)
 	{
 		result = read_tetri(fd, &tetris);
 		if (!result)
 			break ;
 		if (result == -1)
-		{
-			ft_putendl("error");
-			return (1);
-		}
+			ft_exit("error", 1);
 	}
 	width = main_loop(ft_sqrt(ft_lstsize(tetris) * 4), tetris, &boards);
 	print_final_board(boards, width);
+	return (0);
 }
