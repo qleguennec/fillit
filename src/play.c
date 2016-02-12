@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 07:06:27 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/11 14:28:39 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/12 17:35:21 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ t_board			*play(t_board *b, size_t w, t_tetri t, size_t offset)
 		return (NULL);
 	while (t)
 	{
-		*new_board |= (t_board)(t & 0xF)
-			<< (w * i + new_offset);
+		*new_board |= (t_board)(t & 0xF) << (w * i + new_offset);
 		t >>= 4;
 		i++;
 	}
