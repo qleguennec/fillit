@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 07:06:27 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/20 18:52:32 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/20 20:51:03 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,23 @@ int					try_width
 	(t_list *boards, size_t w, t_list *tetris, size_t offset)
 {
 	t_board	*new_board;
+	t_tetri	t;
 
 	if (!tetris)
 		return (1);
-	new_board = play(boards->content, w, *((t_tetri *)tetris->content), offset);
+	t = *(t_tetri *)tetris->content;
+	new_board = play(boards->content, w, t, offset);
 	if (new_board)
 	{
-		boards->next = ft_lstnew(new_board, sizeof(*new_board));
+		if (!boards->next)
+			boards->next = ft_lstnew(new_board, sizeof(*new_board));
+		else
+			boards->next->content = new_board;
 		if (try_width(boards->next, w, tetris->next, 0))
 			return (1);
 		else
 		{
-			ft_lstdel(&boards->next, &ft_delete);
+			ft_lstiter(boards->next, &ft_boardclr);
 			return (try_width(boards, w, tetris, offset + 1));
 		}
 	}
@@ -89,8 +94,7 @@ int					main_loop
 	board = ft_lstnew(ft_memalloc(sizeof(t_board)), sizeof(t_board));
 	while (!try_width(board, width, tetris, 0))
 	{
-		print_final_board(board, width);
-		ft_lstdel(&board->next, &ft_delete);
+		ft_lstiter(board->next, &ft_boardclr);
 		width++;
 	}
 	*sol = board;

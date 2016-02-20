@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 07:54:19 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/20 16:24:07 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/20 20:13:58 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ int							ft_sqrt(int x);
 void						ft_exit(char *msg, int status);
 int							read_tetri(int fd, t_list **tetris);
 int							valid_line(const char *line);
-void						shift_topleft(unsigned short *tetri);
-int							valid_tetri(unsigned short tetri);
+void						shift_topleft(unsigned short *value);
+int							valid_tetri(unsigned short value);
 void						count_lines_columns(t_tetri *tetri);
+void						ft_boardclr(t_list *l);
 
 #endif

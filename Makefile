@@ -6,7 +6,7 @@
 #    By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/25 17:44:49 by qle-guen          #+#    #+#              #
-#    Updated: 2016/02/20 19:08:32 by qle-guen         ###   ########.fr        #
+#    Updated: 2016/02/20 20:13:36 by qle-guen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC			+=	io.c
 SRC			+=	play.c
 SRC			+=	math.c
 SRC			+=	validation.c
+SRC			+=	list.c
 
 # Libraries
 LIBSRC		+=	libft
@@ -82,6 +83,5 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
-.PHONY: test
-test:
-	test/test.sh
+test: $(TARGET)
+	@test/test.sh
