@@ -42,7 +42,12 @@ sub fill {
 }
 
 my $i = 0;
-my $n = int(rand(26)) + 1;
+my $num_args = $#ARGV + 1;
+if ($num_args != 1) {
+    print "Usage: gen.pl nb_tetris\n";
+    exit;
+}
+my $n = int($ARGV[0]);
 foreach $i (1 .. $n) {
 	fill();
 	if ($i != $n) {
