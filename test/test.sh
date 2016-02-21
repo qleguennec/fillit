@@ -27,7 +27,7 @@ echo "Testing against version: https://github.com/mfortin42/fillit.git"
 echo
 make -s -C fillit-test
 
-for i in `seq 1 7`
+for i in `seq 1 11`
 do
 	echo "Testing with $i tetriminos"
 	if [ "$REGEN" = true ]; then

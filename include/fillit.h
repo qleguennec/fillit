@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 07:54:19 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/20 20:13:58 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/21 16:27:17 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct				s_tetri
 	char					columns;
 }							t_tetri;
 
+typedef struct				s_play_result
+{
+	t_board					new_board;
+	size_t					new_offset;
+}							t_play_result;
+
 static 						unsigned short valid_tetris[] =
 {
 	15, 23, 39, 51, 54, 71, 99, 113, 114
@@ -38,8 +44,6 @@ static 						unsigned short valid_tetris[] =
 
 void						print_final_board
 	(t_list *boards, size_t w);
-int							try_width
-	(t_list *boards, size_t w, t_list *tetris, size_t offset);
 int							main_loop
 	(size_t starting_width, t_list *tetris, t_list **sol);
 int							ft_sqrt(int x);
