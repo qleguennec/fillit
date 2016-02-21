@@ -6,13 +6,14 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 07:49:23 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/20 18:20:40 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/21 17:46:00 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
 
-int			main(int argc, char **argv)
+int			main
+	(int argc, char **argv)
 {
 	int		fd;
 	int		result;

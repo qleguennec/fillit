@@ -6,13 +6,14 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 11:47:58 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/21 11:49:01 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/21 17:46:12 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
 
-void		ft_boardclr(t_list *l)
+void		ft_boardclr
+	(t_list *l)
 {
 	(*(t_board *)l->content) = 0;
 }

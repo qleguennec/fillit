@@ -6,13 +6,14 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 15:59:01 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/20 16:27:55 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/21 17:47:13 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
 
-int					valid_line(const char *line)
+int					valid_line
+	(const char *line)
 {
 	char			*s;
 	size_t			i;
@@ -32,7 +33,8 @@ int					valid_line(const char *line)
 	return (1);
 }
 
-void				shift_topleft(unsigned short *tetri)
+void				shift_topleft
+	(unsigned short *tetri)
 {
 	while (!(*tetri & 0xF))
 		*tetri >>= 4;
@@ -40,7 +42,8 @@ void				shift_topleft(unsigned short *tetri)
 		*tetri >>= 1;
 }
 
-int					valid_tetri(unsigned short tetri)
+int					valid_tetri
+	(unsigned short tetri)
 {
 	size_t			i;
 
@@ -54,7 +57,8 @@ int					valid_tetri(unsigned short tetri)
 	return (0);
 }
 
-void				count_lines_columns(t_tetri *tetri)
+void				count_lines_columns
+	(t_tetri *tetri)
 {
 	unsigned short	value;
 	char			max;
