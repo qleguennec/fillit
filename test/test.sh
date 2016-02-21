@@ -2,6 +2,9 @@
 
 TEST_AGAINST=https://github.com/mfortin42/fillit.git
 REGEN=true
+MIN=1
+MAX=10
+
 BLACK="\033[0;30;40m"
 RED="\033[0;31;40m"
 GREEN="\033[0;32;40m"
@@ -11,23 +14,34 @@ MAGENTA="\033[0;35;40m"
 CYAN="\033[0;36;40m"
 WHITE="\033[0;37;40m"
 END="\033[0m"
+
 cd test
 
 if [ ! -d "fillit-test" ]; then
 	git clone $TEST_AGAINST fillit-test
 fi
 
-if [ "$1" = "--no-regen" ]; then
-	REGEN=false
-else
-	rm *.tetris
-fi
+for arg in "$@"
+do
+	case "$arg" in
+	--no-regen)
+		REGEN=false
+		;;
+	-m*)
+		MIN=$(echo $arg | cut -dm -f2)
+		;;
+	-M*)
+		MAX=$(echo $arg | cut -dM -f2)
+		;;
+	esac
+done
 
 echo "Testing against version: https://github.com/mfortin42/fillit.git"
 echo
 make -s -C fillit-test
 
-for i in `seq 1 11`
+echo $BLUE Range: $MIN $MAX $END
+for i in $(seq $MIN $MAX)
 do
 	echo "Testing with $i tetriminos"
 	if [ "$REGEN" = true ]; then
