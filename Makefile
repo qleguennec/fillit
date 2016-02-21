@@ -6,7 +6,7 @@
 #    By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/25 17:44:49 by qle-guen          #+#    #+#              #
-#    Updated: 2016/02/20 20:13:36 by qle-guen         ###   ########.fr        #
+#*   Updated: 2016/02/21 11:55:28 by qle-guen         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,4 +84,4 @@ fclean: clean
 re: fclean all
 
 test: $(TARGET)
-	@test/test.sh
+	@test/test.sh $(ARGS)

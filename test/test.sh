@@ -19,12 +19,13 @@ fi
 
 if [ "$1" = "--no-regen" ]; then
 	REGEN=false
+else
+	rm *.tetris
 fi
 
 echo "Testing against version: https://github.com/mfortin42/fillit.git"
 echo
 make -s -C fillit-test
-rm *.tetris
 
 for i in `seq 1 7`
 do
@@ -34,10 +35,12 @@ do
 	fi
 	MY=$(/usr/bin/time -f "time elapsed:\t%E real,\t%U user,\t%S sys" ../fillit $i.tetris)
 	HIS=$(/usr/bin/time -f "time elapsed:\t%E real,\t%U user,\t%S sys" fillit-test/fillit $i.tetris)
-	if [ ! "$MY" = "$HIS" ]; then
-		echo $RED WRONG FOR $i.tetris $END
-	fi
 	echo My:"\t"$CYAN $MY $END
 	echo His:"\t"$YELLOW $HIS $END
+	if [ ! "$MY" = "$HIS" ]; then
+		echo $RED WRONG FOR $i.tetris $END
+	else
+		echo $GREEN OK $END
+	fi
 	echo
 done
