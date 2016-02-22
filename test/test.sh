@@ -47,8 +47,8 @@ do
 	if [ "$REGEN" = true ]; then
 		../util/gen.pl $i > $i.tetris
 	fi
-	MY=$(/usr/bin/time -f "time elapsed:\t%E real,\t%U user,\t%S sys" ../fillit $i.tetris)
-	HIS=$(/usr/bin/time -f "time elapsed:\t%E real,\t%U user,\t%S sys" fillit-test/fillit $i.tetris)
+	MY=$(time ../fillit $i.tetris)
+	HIS=$(time fillit-test/fillit $i.tetris)
 	echo My:"\t"$CYAN $MY $END
 	echo His:"\t"$YELLOW $HIS $END
 	if [ ! "$MY" = "$HIS" ]; then

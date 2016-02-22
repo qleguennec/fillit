@@ -6,7 +6,7 @@
 #    By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/25 17:44:49 by qle-guen          #+#    #+#              #
-#*   Updated: 2016/02/21 22:50:46 by qle-guen         ###   ########.fr       *#
+#*   Updated: 2016/02/22 13:39:57 by qle-guen         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,5 +83,6 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
+.PHONY: test
 test: $(TARGET)
 	@test/test.sh $(ARGS)
