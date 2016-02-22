@@ -6,17 +6,17 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 07:06:27 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/21 17:34:10 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/22 14:03:43 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
 
-int					valid_play
+int							valid_play
 	(t_board *b, size_t w, t_tetri t, size_t offset)
 {
-	unsigned short	value;
-	size_t			i;
+	unsigned short			value;
+	size_t					i;
 
 	while (1)
 	{
@@ -30,7 +30,7 @@ int					valid_play
 			while (value)
 			{
 				if (*b & (t_board)(value & 0xF) << (w * i + offset))
-					break;
+					break ;
 				value >>= 4;
 				i++;
 			}
@@ -55,8 +55,8 @@ static t_play_result		*play
 	i = 0;
 	while (t.value)
 	{
-		play_result->new_board
-			|= (t_board)(t.value & 0xF) << (w * i + new_offset);
+		play_result->new_board |= (t_board)(t.value & 0xF)
+			<< (w * i + new_offset);
 		t.value >>= 4;
 		i++;
 	}
@@ -94,11 +94,11 @@ static int					try_width
 	return (0);
 }
 
-int					main_loop
+int							main_loop
 	(size_t starting_width, t_list *tetris, t_list **sol)
 {
-	size_t		width;
-	t_list		*board;
+	size_t					width;
+	t_list					*board;
 
 	width = starting_width;
 	board = ft_lstnew(ft_memalloc(sizeof(t_board)), sizeof(t_board));

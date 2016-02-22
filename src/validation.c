@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 15:59:01 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/21 17:47:13 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/22 14:01:27 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int					valid_tetri
 	size_t			i;
 
 	i = 0;
-	while (i < sizeof(valid_tetris)/sizeof(valid_tetris[0]))
+	while (i < sizeof(g_valid_tetris) / sizeof(g_valid_tetris[0]))
 	{
-		if (valid_tetris[i] == tetri)
+		if (g_valid_tetris[i] == tetri)
 			return (1);
 		i++;
 	}

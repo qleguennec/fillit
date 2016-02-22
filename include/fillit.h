@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 07:54:19 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/21 16:27:17 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/02/22 14:01:03 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct				s_play_result
 	size_t					new_offset;
 }							t_play_result;
 
-static 						unsigned short valid_tetris[] =
+static unsigned short		g_valid_tetris[] =
 {
 	15, 23, 39, 51, 54, 71, 99, 113, 114
 	, 116, 275, 305, 306, 547, 561, 562, 785, 802, 4369
