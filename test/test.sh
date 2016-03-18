@@ -5,14 +5,14 @@ REGEN=true
 MIN=1
 MAX=10
 
-BLACK="\033[0;30;40m"
-RED="\033[0;31;40m"
-GREEN="\033[0;32;40m"
-YELLOW="\033[1;33;40m"
-BLUE="\033[0;34;40m"
-MAGENTA="\033[0;35;40m"
-CYAN="\033[0;36;40m"
-WHITE="\033[0;37;40m"
+BLACK="\033[0;30m"
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[1;33m"
+BLUE="\033[0;34m"
+MAGENTA="\033[0;35m"
+CYAN="\033[0;36m"
+WHITE="\033[0;37m"
 END="\033[0m"
 
 cd test
@@ -49,8 +49,8 @@ do
 	fi
 	MY=$(time ../fillit $i.tetris)
 	HIS=$(time fillit-test/fillit $i.tetris)
-	echo My:"\t"$CYAN $MY $END
-	echo His:"\t"$YELLOW $HIS $END
+	echo My:"\t"$RED $MY $END
+	echo His:"\t"$CYAN $HIS $END
 	if [ ! "$MY" = "$HIS" ]; then
 		echo $RED WRONG FOR $i.tetris $END
 	else
