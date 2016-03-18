@@ -6,7 +6,7 @@
 #    By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/25 17:44:49 by qle-guen          #+#    #+#              #
-#*   Updated: 2016/03/18 11:39:20 by qle-guen         ###   ########.fr       *#
+#*   Updated: 2016/03/18 11:43:12 by qle-guen         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ re: fclean all
 .PHONY: pull-libft
 pull-libft:
 	@git clone http://github.com/qleguennec/libft.git lib/libft
+	@cp -r lib/libft/libft.h include/
 
 .PHONY: test
 test: $(TARGET)
