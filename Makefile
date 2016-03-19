@@ -57,7 +57,7 @@ $(BUILDDIR):
 
 $(LIBDIR)/$(LIBSRC):
 	@git clone http://github.com/qleguennec/$(@F).git $@
-	@cp $@/$(shell make -C $@ include)/$(@F).h $(INCLUDE) 2> /dev/null || true
+	@cp $@/includes/$(@F).h $(INCLUDE) 2> /dev/null || true
 
 .PHONY: clean
 clean:
