@@ -55,7 +55,7 @@ $(TARGET): $(LIBS) $(OBJECTS)
 $(BUILDDIR):
 	@mkdir $(BUILDDIR)
 
-$(LIBDIR)/%:
+$(LIBDIR)/$(LIBSRC):
 	@git clone http://github.com/qleguennec/$(@F).git $@
 	@cp $@/includes/$(@F).h $(INCLUDE) 2> /dev/null || true
 
