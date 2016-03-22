@@ -3,14 +3,15 @@ BINDIR		=	.
 SRCDIR		=	src
 BUILDDIR	=	build
 LIBDIR		=	lib
-INCLUDE		=	includes
+INCLUDE		+=	includes
+INCLUDE		+=	$(LIBDIR)/$(LIBSRC)/includes
 NAME		=	fillit
 TARGET		=	$(BINDIR)/$(NAME)
 
 # Compiler options
 CC			=	clang
 LIBFLAGS	=	-L$(BUILDDIR) $(subst lib,-l,$(LIBSRC))
-CFLAGS		=	-I$(INCLUDE) -Wall -Wextra -Werror -g
+CFLAGS		=	$(addprefix -I, $(INCLUDE)) -Wall -Wextra -Werror -g
 
 # Color output
 BLACK		=	"\033[0;30m"
@@ -44,8 +45,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c $(BUILDDIR)
 	@echo $(GREEN)+++ obj: $(YELLOW)$(@F)$(END)
 
 $(BUILDDIR)/%.a: $(LIBDIR)/% $(BUILDDIR) $(LIBDIR)/$(LIBSRC)
-	@make -s -C $< > /dev/null
-	@cp $</$(@F) $@
+	@BINDIR=$(PWD)/$(BUILDDIR) make -s -C $< > /dev/null
 	@echo $(GREEN)+++ lib: $(CYAN)$(@F)$(END)
 
 $(TARGET): $(LIBS) $(OBJECTS)
@@ -57,7 +57,6 @@ $(BUILDDIR):
 
 $(LIBDIR)/$(LIBSRC):
 	@git clone http://github.com/qleguennec/$(@F).git $@
-	@cp $@/includes/$(@F).h $(INCLUDE) 2> /dev/null || true
 
 .PHONY: clean
 clean:
@@ -72,5 +71,8 @@ fclean: clean
 re: fclean all
 
 .PHONY: test
-test:
+test: re
 	@test/test.sh $(ARGS)
+
+rendu: fclean
+	@util/rendu.sh
