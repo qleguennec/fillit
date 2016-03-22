@@ -23,5 +23,4 @@ for DIR in ${CPY[@]}; do
 	cp -r $DIR $PROJECT_DIR
 done
 
-make -C $PROJECT_DIR re
-#find $PROJECT_DIR -mindepth 2 -type d -name ".git" -exec rm -rf {} \;
+make -C $PROJECT_DIR deps fclean

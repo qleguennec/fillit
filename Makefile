@@ -10,7 +10,7 @@ TARGET		=	$(BINDIR)/$(NAME)
 
 # Compiler options
 CC			=	clang
-LIBFLAGS	=	-L$(BUILDDIR) $(subst lib,-l,$(LIBSRC))
+LIBFLAGS	=	-L$(BUILDDIR) -l$(LIBSRC:lib%=%)
 CFLAGS		=	$(addprefix -I, $(INCLUDE)) -Wall -Wextra -Werror -g
 
 # Color output
@@ -45,7 +45,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c $(BUILDDIR)
 	@echo $(GREEN)+++ obj: $(YELLOW)$(@F)$(END)
 
 $(BUILDDIR)/%.a: $(LIBDIR)/% $(BUILDDIR) $(LIBDIR)/$(LIBSRC)
-	@BINDIR=$(PWD)/$(BUILDDIR) make -s -C $< > /dev/null
+	@BINDIR=$(CURDIR)/$(BUILDDIR) make -s -C $< > /dev/null
 	@echo $(GREEN)+++ lib: $(CYAN)$(@F)$(END)
 
 $(TARGET): $(LIBS) $(OBJECTS)
@@ -57,6 +57,8 @@ $(BUILDDIR):
 
 $(LIBDIR)/$(LIBSRC):
 	@git clone http://github.com/qleguennec/$(@F).git $@
+
+deps: $(LIBDIR)/$(LIBSRC)
 
 .PHONY: clean
 clean:
@@ -76,3 +78,6 @@ test: re
 
 rendu: fclean
 	@util/rendu.sh
+
+get-%:
+	@echo '$($*)'
