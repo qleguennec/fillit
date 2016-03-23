@@ -59,6 +59,7 @@ $(BUILDDIR):
 
 $(LIBDIR)/$(LIBSRC):
 	@git clone http://github.com/qleguennec/$(@F).git $@
+	@make -s -C $@ purge
 
 .PHONY: clean
 clean:
