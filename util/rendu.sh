@@ -29,5 +29,4 @@ make -C $PROJECT_DIR all fclean
 find $PROJECT_DIR -mindepth 2 -type d -name ".git" -exec rm -rf {} \; 2>/dev/null
 
 ls -la $PROJECT_DIR
-
 exit 0
