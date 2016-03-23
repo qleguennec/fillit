@@ -41,10 +41,12 @@ LIBS		=	$(addprefix $(BUILDDIR)/, $(addsuffix .a,$(LIBSRC)))
 all: $(TARGET)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c $(BUILDDIR)
+	@[ -d $(BUILDDIR) ] || mkdir $(BUILDDIR); true
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo $(GREEN)+++ obj: $(YELLOW)$(@F)$(END)
 
 $(BUILDDIR)/%.a: $(LIBDIR)/% $(BUILDDIR) $(LIBDIR)/$(LIBSRC)
+	@[ -d $(BUILDDIR) ] || mkdir $(BUILDDIR); true
 	@BINDIR=$(CURDIR)/$(BUILDDIR) make -s -C $< > /dev/null
 	@echo $(GREEN)+++ lib: $(CYAN)$(@F)$(END)
 
@@ -62,6 +64,7 @@ $(LIBDIR)/$(LIBSRC):
 clean:
 	@rm $(LIBS) 2> /dev/null && echo $(RED)--- lib: $(CYAN)$(LIBS:$(BUILDDIR)/%=%)$(END); true
 	@rm $(OBJECTS) 2> /dev/null && echo $(RED)--- obj: $(YELLOW)$(OBJECTS:$(BUILDDIR)/%=%)$(END); true
+	@[ "$(find $(BUILDDIR) -maxdepth 0 -empty)" ] || rm -r $(BUILDDIR) 2> /dev/null; true
 
 .PHONY:	fclean
 fclean: clean
