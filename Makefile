@@ -45,7 +45,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c $(BUILDDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo $(GREEN)+++ obj: $(YELLOW)$(@F)$(END)
 
-$(BUILDDIR)/%.a: $(LIBDIR)/% $(BUILDDIR) $(LIBDIR)/$(LIBSRC)
+$(BUILDDIR)/%.a: $(LIBDIR)/%
 	@[ -d $(BUILDDIR) ] || mkdir $(BUILDDIR); true
 	@BINDIR=$(CURDIR)/$(BUILDDIR) make -s -C $< > /dev/null
 	@echo $(GREEN)+++ lib: $(CYAN)$(@F)$(END)
