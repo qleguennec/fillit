@@ -54,7 +54,7 @@ $(TARGET): $(LIBS) $(OBJECTS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFLAGS)
 	@echo $(GREEN)+++ bin: $(BLUE)$(NAME)$(END)
 
-$(LIBDIR)/$(LIBSRC):
+$(LIBDIR)/%:
 	@git clone http://github.com/qleguennec/$(@F).git $@
 	@make -s -C $@ purge
 
