@@ -49,8 +49,8 @@ do
 	if [ "$REGEN" = true ]; then
 		../util/gen.pl $i > $i.tetris
 	fi
-	MY=$(time $MYDIR/fillit $i.tetris)
-	HIS=$(time $HISDIR/fillit $i.tetris)
+	MY=$($MYDIR/fillit $i.tetris)
+	HIS=$($HISDIR/fillit $i.tetris)
 	echo My:"\t"$RED $MY $END
 	echo His:"\t"$CYAN $HIS $END
 	if [ ! "$MY" = "$HIS" ]; then
