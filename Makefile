@@ -58,8 +58,6 @@ $(BUILDDIR):
 $(LIBDIR)/$(LIBSRC):
 	@git clone http://github.com/qleguennec/$(@F).git $@
 
-deps: $(LIBDIR)/$(LIBSRC)
-
 .PHONY: clean
 clean:
 	@rm $(LIBS) 2> /dev/null && echo $(RED)--- lib: $(CYAN)$(LIBS:$(BUILDDIR)/%=%)$(END); true
@@ -76,7 +74,8 @@ re: fclean all
 test: re
 	@test/test.sh $(ARGS)
 
-rendu: fclean
+.PHONY: rendu
+rendu:
 	@util/rendu.sh
 
 get-%:
