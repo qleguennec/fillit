@@ -40,7 +40,7 @@ LIBS		=	$(addprefix $(BUILDDIR)/, $(addsuffix .a,$(LIBSRC)))
 
 all: $(TARGET)
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.c $(BUILDDIR)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	@[ -d $(BUILDDIR) ] || mkdir $(BUILDDIR); true
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo $(GREEN)+++ obj: $(YELLOW)$(@F)$(END)
@@ -53,9 +53,6 @@ $(BUILDDIR)/%.a: $(LIBDIR)/%
 $(TARGET): $(LIBS) $(OBJECTS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFLAGS)
 	@echo $(GREEN)+++ bin: $(BLUE)$(NAME)$(END)
-
-$(BUILDDIR):
-	@mkdir $(BUILDDIR)
 
 $(LIBDIR)/$(LIBSRC):
 	@git clone http://github.com/qleguennec/$(@F).git $@
