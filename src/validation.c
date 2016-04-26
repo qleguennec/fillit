@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 15:59:01 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/02/22 14:01:27 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/04/26 10:46:32 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int					valid_line
 	char			*s;
 	size_t			i;
 
-	if (!line)
+	if (!line || !ft_strchr(line, '#'))
 		return (0);
 	s = (char *)line;
 	i = 0;

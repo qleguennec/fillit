@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 06:25:24 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/04/21 15:40:25 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/04/26 10:43:28 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ int			read_tetri(int fd, t_list **tetris)
 
 	tetri = ft_memalloc(sizeof(*tetri));
 	ft_bzero(line, 21);
-	if ((r_result = read(fd, line, 21)) == -1 || !valid_line(line)
-		|| !ft_strchr(line, '#'))
+	if ((r_result = read(fd, line, 21)) == -1 || !valid_line(line))
 		return (-1);
 	line[20] = '\0';
-	while ((buf = ft_strchr(line, '#')) && (*buf = '.'))
+	while ((buf = ft_strchr(line, '#')))
 	{
+		*buf = '.';
 		i = buf - line - 4;
 		while ((buf = ft_strchr(buf, '\n')) && buf++)
 			i++;

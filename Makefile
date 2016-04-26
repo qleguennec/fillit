@@ -40,8 +40,7 @@ OBJECTS		=	$(addprefix $(BUILDDIR)/, $(SRC:%.c=%.o))
 LIBS		=	$(addprefix $(LIBDIR)/, $(addsuffix .a,$(LIBSRC)))
 
 all: deps $(TARGET)
-
-$(LIBDIR)/libgnl.a: $(LIBDIR)/libft.a
+$(NAME): $(TARGET)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	@[ -d $(BUILDDIR) ] || mkdir $(BUILDDIR); true
